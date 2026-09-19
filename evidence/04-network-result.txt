@@ -1,0 +1,23 @@
+# Final network state (sanitized)
+
+TARGET SLOT
+voice_registration=IN_SERVICE
+data_registration=IN_SERVICE
+voice_rat=NR_SA
+data_rat=NR_SA
+operator=CMCC
+band=n41
+nr_arfcn=<redacted>
+cell_identity=<redacted>
+signal=<redacted>
+data_connection=CONNECTED
+ims_pdn=CONNECTED
+ping_test=3/3 replies
+
+QTI PHONE PROCESS
+pid_before_exttelephony_operation=<same-process-A>
+pid_after_exttelephony_operation=<same-process-A>
+
+Interpretation:
+- SA registration and data were functional after reconciliation.
+- ExtTelephony use did not require restarting or replacing the QTI phone process.

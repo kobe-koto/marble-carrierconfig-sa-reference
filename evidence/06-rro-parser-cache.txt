@@ -1,0 +1,27 @@
+# RRO implementation evidence (sanitized)
+
+1. Document order
+The ROM merges every matching carrier_config block in XML order using bundle overwrite
+semantics. A late selector-less block can override an earlier MCC/MNC block.
+
+Required conservative strategy:
+- scan original explicit NSA selectors
+- append final matching override blocks at end of document
+
+2. Raw MNC values
+Incorrect binary XML:
+  mnc=0
+
+Required binary XML:
+  mnc=0 (Raw: "00")
+
+Required aapt2 option:
+  --keep-raw-values
+
+3. CarrierConfig cache
+An RRO does not change the target CarrierConfig app version. Existing phone-process cache
+can therefore survive installation and hide the new XML until invalidated.
+
+4. Pure RRO limitation
+After final CarrierConfig showed [1,2] and SA enabled, QTI still reported NrConfig=1 until
+an explicit ExtTelephony set operation occurred.

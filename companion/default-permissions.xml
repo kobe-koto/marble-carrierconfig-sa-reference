@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exceptions>
+    <exception package="io.github.evox.carrierconfig.sa.enforcer">
+        <permission name="android.permission.READ_PHONE_STATE" fixed="true" />
+    </exception>
+</exceptions>

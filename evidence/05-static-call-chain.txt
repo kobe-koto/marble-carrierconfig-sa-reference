@@ -1,0 +1,30 @@
+# Static analysis summary (sanitized)
+
+QtiTelephony.apk contains the server-side path:
+
+ExtTelephonyService.setNrConfig
+  -> ExtTelephonyServiceImpl.setNrConfig
+  -> QtiRadioProxy.setNrConfig
+  -> QtiRadioAidl.setNrConfig / QtiRadioHidl.setNrConfig
+  -> vendor.qti.hardware.radio.qtiradio.IQtiRadio.setNrConfig
+
+ExtTelephonyManager exposes:
+
+setNrConfig(slot, NrConfig, Client)
+queryNrConfig(slot, Client)
+registerCallback(packageName, callback)
+
+TeleService.apk search result:
+- no setNrConfig caller found
+- no queryNrConfig caller found
+- no vendor carrier_disable_sa_mode_bool consumer found
+- no vendor carrier_disable_vice_sa_mode_bool consumer found
+
+QtiTelephony.apk behavior:
+- provides Binder/API implementation
+- validates caller permissions/client
+- forwards requests to the existing QTI radio owner
+- no automatic CarrierConfig-to-NrConfig reconciliation found
+
+Inference:
+The missing link is between final CarrierConfig policy and the existing ExtTelephony API.

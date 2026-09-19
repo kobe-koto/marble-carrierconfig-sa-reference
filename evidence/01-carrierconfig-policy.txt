@@ -1,0 +1,23 @@
+# Effective CarrierConfig, selected subscription (sanitized)
+
+BEFORE
+carrier_sa_mode_available_bool=true
+carrier_disable_sa_mode_bool=true
+carrier_disable_vice_sa_mode_bool=true
+carrier_nr_availabilities_int_array=[1]
+
+AFTER CONSERVATIVE RRO + CACHE RELOAD
+carrier_sa_mode_available_bool=true
+carrier_disable_sa_mode_bool=false
+carrier_disable_vice_sa_mode_bool=false
+carrier_nr_availabilities_int_array=[1,2]
+
+CONTROL SUBSCRIPTION
+carrier_sa_mode_available_bool=false
+carrier_disable_sa_mode_bool=true
+carrier_disable_vice_sa_mode_bool=true
+eligible_for_enforcer=false
+
+Interpretation:
+- The target subscription's final policy changed to combined SA+NSA.
+- The unrelated active subscription remained excluded.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config mcc="460" mnc="00">
+        <int-array name="carrier_nr_availabilities_int_array" num="1">
+            <item value="1" />
+        </int-array>
+        <boolean name="carrier_sa_mode_available_bool" value="true" />
+        <boolean name="carrier_disable_sa_mode_bool" value="true" />
+        <boolean name="carrier_disable_vice_sa_mode_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="999" mnc="99">
+        <boolean name="carrier_sa_mode_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config>
+        <boolean name="carrier_disable_sa_mode_bool" value="true" />
+        <boolean name="carrier_disable_vice_sa_mode_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

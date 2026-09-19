@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.evox.carrierconfig.sa.enforcer"
+    android:versionCode="3"
+    android:versionName="1.1.1">
+    <uses-sdk android:minSdkVersion="31" android:targetSdkVersion="35" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="com.qualcomm.qti.permission.USE_EXT_TELEPHONY_SERVICE" />
+    <application
+        android:allowBackup="false"
+        android:directBootAware="true"
+        android:hasCode="true"
+        android:label="CarrierConfig SA enforcer"
+        android:persistent="false">
+        <uses-library android:name="com.qti.extphone.extphonelib" android:required="true" />
+        <receiver
+            android:name=".SaModeReceiver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.MODIFY_PHONE_STATE">
+            <intent-filter android:priority="500">
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

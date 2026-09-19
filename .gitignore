@@ -1,0 +1,22 @@
+# Local ROM-derived inputs (may contain vendor/carrier data)
+overlay/input/*
+!overlay/input/.gitkeep
+
+# Local signing material
+keys/
+*.jks
+*.keystore
+*.p12
+
+# Generated outputs
+build/
+dist/
+reports/
+variants/
+
+# Python / editor / OS
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+.DS_Store

@@ -1,0 +1,24 @@
+# Qualcomm NR mode capability test (sanitized)
+
+slot=<target>
+query_before: status=SUCCESS, NrConfig=1
+set: target=0
+set_response: status=SUCCESS
+query_after_1: status=SUCCESS, NrConfig=0
+query_after_2: status=SUCCESS, NrConfig=0
+
+Observed shortly afterwards:
+voice_rat=NR_SA
+data_rat=NR_SA
+band=n41
+registration=HOME/IN_SERVICE
+data_connectivity=SUCCESS
+endc_capability=true
+
+Control rollback:
+set target=1 -> SUCCESS
+query -> NrConfig=1
+
+Interpretation:
+- The modem, RF, SIM and active commercial profile could complete SA registration.
+- The immediate blocker was runtime mode 1 (NSA-only), not an absolute lack of SA capability.

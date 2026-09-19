@@ -1,0 +1,34 @@
+# Persistent companion audit, cold boot (sanitized)
+
+EARLY BOOT PASS 1
+control_slot: eligible=false
+target_slot: saAvailable=false disableSa=true eligible=false
+result: no eligible active slots
+
+EARLY BOOT PASS 2
+control_slot: eligible=false
+target_slot: saAvailable=false disableSa=true eligible=false
+result: no eligible active slots
+
+FINAL CARRIER CONFIG PASS
+target_slot:
+  nr=[1,2]
+  saAvailable=true
+  disableSa=false
+  disableViceSa=false
+  eligible=true
+control_slot:
+  eligible=false
+
+ExtTelephony connected
+registered callback client
+initial query target_slot -> NrConfig=1
+setNrConfig target_slot target=0 -> accepted
+onSetNrConfig -> SUCCESS
+verify query target_slot -> NrConfig=0
+finish -> all eligible slots confirmed combined
+
+Interpretation:
+- Early boot can expose temporary/default CarrierConfig values.
+- Listening for the later final CarrierConfig broadcast is required.
+- The unrelated slot was not modified.
