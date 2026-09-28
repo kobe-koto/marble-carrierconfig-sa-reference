@@ -44,6 +44,7 @@ build.sh               本地构建 RRO、companion 和模块 ZIP
 ## 文档入口
 
 - [完整分析](docs/analysis.md)
+- [Troubleshooting 与移植指北](docs/troubleshooting-and-porting-guide.md)
 - [架构与方案边界](docs/architecture.md)
 - [ROM 维护者修复指引](docs/maintainer-fix-guide.md)
 - [验证方法和结果](docs/validation.md)
